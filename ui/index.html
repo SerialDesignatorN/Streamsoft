@@ -4,8 +4,31 @@
         <title>Streamsoft Beta</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../assets/woff2/material-symbols/material-symbols.css">
+        <link rel="stylesheet" href="../assets/woff2/typonine/typonine.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/default.css">
     </head>
     <body>
-        <h1>Hello World</h1>
+        <div class="titlebar">
+            <div class="menu-actions">
+                <img src="../assets/images/streamsoft.png">
+            </div>
+            <div class="filler-drag">
+                <p>Streamsoft Beta</p>
+            </div>
+            <div class="window-actions">
+                <div class="action-button" id="minimize">
+                    <span class="material-symbols-outlined">remove</span>
+                </div>
+                <div class="action-button" id="maximize">
+                    <span class="material-symbols-outlined" id="ui-text-maximize">crop_square</span>
+                </div>
+                <div class="action-button" id="close">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+        </div>
+        <script src="../scripts/ResizableWindow.js" type="text/javascript"></script>
     </body>
 </html>

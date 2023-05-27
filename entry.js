@@ -8,10 +8,12 @@ const InitializeApplication = () => {
     const UIWindow = new BrowserWindow({
         width: 1024,
         height: 600,
+        frame: false,
         icon: APP_ICON,
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
+            contextIsolation: false
         }
     })
     require('@electron/remote/main').initialize()
