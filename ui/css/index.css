@@ -7,17 +7,13 @@ body {
     background-color: var(--main-color);
 }
 .titlebar {
-    padding: 10px;
     display: flex;
     justify-content: space-between;
 }
 .action-button {
     display: inline-flex;
-    margin-right: 8px;
     user-select: none;
-    padding-left: 2px;
-    padding-right: 2px;
-    margin-left: 8px;
+    padding: 10px;
 }
 .action-button:hover {
     background-color: var(--main-button-hover-color);
@@ -25,13 +21,33 @@ body {
 img {
     width: 24px;
     height: 24px;
+    user-select: none;
 }
 .filler-drag {
-    display: inline-flex;
     flex: 1;
     -webkit-app-region: drag;
     align-items: center;
+    text-align: center;
     flex-wrap: nowrap;
     flex-direction: column;
     align-content: center;
+}
+.ui-givepad {
+    padding: 10px;
+    display: inline-flex;
+    flex: 1;
+    justify-content: space-between;
+}
+.titlebar-menu {
+    display: flex;
+    align-content: center;
+    margin-left: 5px;
+}
+.titlebar-menu span {
+    padding: 2px;
+    margin-left: 10px;
+    user-select: none;
+}
+.titlebar-menu span:hover {
+    background-color: var(--main-button-hover-color);
 }
