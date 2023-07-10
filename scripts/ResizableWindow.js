@@ -1,10 +1,10 @@
-const ElectronRemote = require('@electron/remote')
+const AppRemote = require('@electron/remote')
 const UIMinimize = document.getElementById('minimize')
 const UIMaximize = document.getElementById('maximize')
 const UIClose = document.getElementById('close')
 const UITextMaximize = document.getElementById('ui-text-maximize')
 
-const GetWindow = () => ElectronRemote.BrowserWindow.getFocusedWindow()
+const GetWindow = () => require('@electron/remote').BrowserWindow.getFocusedWindow()
 
 const Minimize = () => GetWindow().minimize()
 const Maximize = () => {

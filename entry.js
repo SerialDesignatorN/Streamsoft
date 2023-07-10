@@ -1,6 +1,7 @@
 const Electron = require('electron');
 const Application = Electron.app;
 const BrowserWindow = Electron.BrowserWindow
+const DesktopCapturer = Electron.desktopCapturer
 const Path = require('path')
 const APP_ICON = Path.join(__dirname, '/build/icons/512x512.png');
 
