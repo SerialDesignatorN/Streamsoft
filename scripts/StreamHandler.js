@@ -1,14 +1,14 @@
 const { desktopCapturer } = require('@electron/remote');
+
 const UIDefinedCharacterCut = 20;
 const UIStreamsContainer = document.getElementById('ui-media-selector');
 const modalBackdrop = document.getElementById('ui-selector-backdrop');
 const modalCancelBtn = document.getElementById('ui-cancel-selection');
 
 let selectedSource = null; // Initialize selectedSource as null
-
 let isCapturing = false; // Track if capture is ongoing
 
-const StartCapture = async () => {
+const StartCapture = async (id) => {
   if (!selectedSource) {
     console.error('Screen source not selected');
     return;
@@ -17,29 +17,36 @@ const StartCapture = async () => {
   modalBackdrop.style.display = 'none';
   isCapturing = true;
 
-  const VideoRenderer = document.createElement('video');
-  VideoRenderer.srcObject = await navigator.mediaDevices.getUserMedia({
-    audio: true,
-    video: {
-      mandatory: {
-        chromeMediaSource: 'desktop',
-        chromeMediaSourceId: selectedSource.id,
-        minWidth: 960,
-        maxWidth: 2560,
-        minHeight: 480,
-        maxHeight: 1440
+  try {
+    const videoStream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: {
+        advanced: [
+          {
+            chromeMediaSource: 'desktop',
+            chromeMediaSourceId: id,
+            minWidth: 960,
+            maxWidth: 2560,
+            minHeight: 480,
+            maxHeight: 1440
+          }
+        ]
       }
-    }
-  });
+    });
 
-  VideoRenderer.play();
+    const VideoRenderer = document.createElement('video');
+    VideoRenderer.srcObject = videoStream;
+    VideoRenderer.play();
 
-  const CanvasRenderer = document.getElementById('canvas-renderer');
-  const CanvasCTX = CanvasRenderer.getContext('2d');
+    const CanvasRenderer = document.getElementById('canvas-renderer');
+    const CanvasCTX = CanvasRenderer.getContext('2d');
 
-  setInterval(() => {
-    CanvasCTX.drawImage(VideoRenderer, 0, 0, CanvasRenderer.width, CanvasRenderer.height);
-  }, 1000 / 60);
+    setInterval(() => {
+      CanvasCTX.drawImage(VideoRenderer, 0, 0, CanvasRenderer.width, CanvasRenderer.height);
+    }, 1000 / 60);
+  } catch (error) {
+    console.error('An error occurred while capturing the video stream:', error);
+  }
 };
 
 modalCancelBtn.onclick = () => {
@@ -47,25 +54,13 @@ modalCancelBtn.onclick = () => {
   selectedSource = null; // Reset selectedSource when cancelling selection
 };
 
-UIStreamsContainer.addEventListener('click', async (event) => {
-  if (isCapturing) {
-    return; // Return early if capture is ongoing
-  }
-
-  const sourceElement = event.target.closest('.ui-source-creator');
-  if (sourceElement) {
-    selectedSource = await desktopCapturer.getSourceById(sourceElement.id); // Set selectedSource based on the ID
-    modalBackdrop.style.display = 'none';
-    StartCapture(); // Start capturing with the selected source
-  }
-});
-
 const updateStreamSelector = async () => {
   UIStreamsContainer.innerHTML = '';
 
   const AppSources = await desktopCapturer.getSources({ types: ['screen', 'window'] });
 
   AppSources.forEach(UISource => {
+    console.log(`UISource: name:${UISource.name},id:${UISource.id},displayId:${UISource.display_id}`)
     const UISourceCreator = document.createElement('div');
     UISourceCreator.className = 'ui-source-creator';
     UISourceCreator.id = UISource.id; // Set the ID of the source element
@@ -74,22 +69,17 @@ const updateStreamSelector = async () => {
     <p>${UISource.name.slice(0, UIDefinedCharacterCut) + (UISource.name.length > UIDefinedCharacterCut ? '...' : '')}</p>
     `;
     UIStreamsContainer.appendChild(UISourceCreator);
-
-    UISourceCreator.addEventListener('dblclick', async () => {
-      if (isCapturing) {
-        return; // Return early if capture is ongoing
-      }
-
-      selectedSource = await desktopCapturer.getSourceById(UISourceCreator.id); // Set selectedSource based on the ID
+    UISourceCreator.addEventListener('dblclick', async () => { 
+      console.log(UISourceCreator.id)
+      selectedSource = UISourceCreator.id
       modalBackdrop.style.display = 'none';
-      StartCapture(); // Start capturing with the selected source
+      StartCapture(selectedSource); // Start capturing with the selected source
     });
   });
 };
 
 document.getElementById('ui-start-capture').addEventListener('click', () => {
-  if (!isCapturing) {
-    modalBackdrop.style.display = 'flex';
-    updateStreamSelector(); // Update the stream selector when the capture button is clicked
-  }
+  modalBackdrop.style.display = 'flex';
+  updateStreamSelector(); // Update the stream selector when the capture button is clicked
 });
+document.getElementById('ui-reload-selection').addEventListener('click', updateStreamSelector)
