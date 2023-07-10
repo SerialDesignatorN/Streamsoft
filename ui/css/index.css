@@ -1,6 +1,6 @@
 @keyframes ui-slight-popup {
     0% {
-        transform: scale(1.1);
+        transform: scale(1.05);
         opacity: 0;
     }
     100% {
@@ -97,7 +97,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     display: none;
     position: absolute;
-    animation: ui-slight-popup 1s ease;
+    animation: ui-slight-popup 0.5s ease;
     top: 0;
     left: 0;
     width: 100vw;
@@ -125,6 +125,11 @@ body {
     width: 200px;
     height: 112px;
     border-radius: 8px;
+}
+#ui-media-selector {
+    max-height: 60vh;
+    overflow-y: scroll;
+    margin-bottom: 5px;
 }
 canvas {
     background-color: #fff;
