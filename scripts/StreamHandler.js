@@ -9,9 +9,16 @@ let selectedSource = null; // Initialize selectedSource as null
 let isCapturing = false; // Track if capture is ongoing
 
 const StartCapture = async (id) => {
+  var DumpedID = ''
   if (!selectedSource) {
     console.error('Screen source not selected');
     return;
+  }
+  if (isCapturing == true) {
+    DumpedID = ''
+    DumpedID = id
+  } else {
+    DumpedID = id
   }
 
   modalBackdrop.style.display = 'none';
@@ -27,7 +34,7 @@ const StartCapture = async (id) => {
       video: {
         mandatory: {
           chromeMediaSource: 'desktop',
-            chromeMediaSourceId: id,
+            chromeMediaSourceId: DumpedID,
             minWidth: 960,
             maxWidth: 2560,
             minHeight: 480,
