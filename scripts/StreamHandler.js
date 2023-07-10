@@ -18,24 +18,27 @@ const StartCapture = async (id) => {
   isCapturing = true;
 
   try {
-    const videoStream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
+    const HandlerVideoStream = await navigator.mediaDevices.getUserMedia({
+      audio: {
+        mandatory: {
+          chromeMediaSource: 'desktop'
+        }
+      },
       video: {
-        advanced: [
-          {
-            chromeMediaSource: 'desktop',
+        mandatory: {
+          chromeMediaSource: 'desktop',
             chromeMediaSourceId: id,
             minWidth: 960,
             maxWidth: 2560,
             minHeight: 480,
             maxHeight: 1440
-          }
-        ]
+        }
       }
     });
 
     const VideoRenderer = document.createElement('video');
-    VideoRenderer.srcObject = videoStream;
+    VideoRenderer.srcObject = HandlerVideoStream;
+    VideoRenderer.muted = true
     VideoRenderer.play();
 
     const CanvasRenderer = document.getElementById('canvas-renderer');
