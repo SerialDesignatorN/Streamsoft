@@ -8,6 +8,11 @@ const modalCancelBtn = document.getElementById('ui-cancel-selection');
 let selectedSource = null; // Initialize selectedSource as null
 let isCapturing = false; // Track if capture is ongoing
 
+let HandlerVideoStream;
+let VideoRenderer;
+let CanvasCTX;
+let intervalId;
+
 const StartCapture = async (id) => {
   var DumpedID = ''
   if (!selectedSource) {
@@ -17,6 +22,11 @@ const StartCapture = async (id) => {
   if (isCapturing == true) {
     DumpedID = ''
     DumpedID = id
+    HandlerVideoStream.getTracks().forEach(track => track.stop());
+    VideoRenderer.pause();
+    const CanvasRenderer = document.getElementById('canvas-renderer');
+    CanvasCTX.clearRect(0, 0, CanvasRenderer.width, CanvasRenderer.height);
+    clearInterval(intervalId);
   } else {
     DumpedID = id
   }
@@ -25,7 +35,7 @@ const StartCapture = async (id) => {
   isCapturing = true;
 
   try {
-    const HandlerVideoStream = await navigator.mediaDevices.getUserMedia({
+    HandlerVideoStream = await navigator.mediaDevices.getUserMedia({
       audio: {
         mandatory: {
           chromeMediaSource: 'desktop'
@@ -43,21 +53,22 @@ const StartCapture = async (id) => {
       }
     });
 
-    const VideoRenderer = document.createElement('video');
+    VideoRenderer = document.createElement('video');
     VideoRenderer.srcObject = HandlerVideoStream;
     VideoRenderer.muted = true
     VideoRenderer.play();
 
     const CanvasRenderer = document.getElementById('canvas-renderer');
-    const CanvasCTX = CanvasRenderer.getContext('2d');
+    CanvasCTX = CanvasRenderer.getContext('2d');
 
-    setInterval(() => {
+    intervalId = setInterval(() => {
       CanvasCTX.drawImage(VideoRenderer, 0, 0, CanvasRenderer.width, CanvasRenderer.height);
     }, 1000 / 60);
   } catch (error) {
     console.error('An error occurred while capturing the video stream:', error);
   }
 };
+
 
 modalCancelBtn.onclick = () => {
   modalBackdrop.style.display = 'none';
