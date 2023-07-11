@@ -59,6 +59,7 @@ const StartCapture = async (id) => {
     VideoRenderer.play();
 
     const CanvasRenderer = document.getElementById('canvas-renderer');
+    CanvasRenderer.style.backgroundImage = ''
     CanvasCTX = CanvasRenderer.getContext('2d');
 
     intervalId = setInterval(() => {

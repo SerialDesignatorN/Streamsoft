@@ -132,7 +132,9 @@ body {
     margin-bottom: 5px;
 }
 canvas {
-    background-color: #fff;
+    background-image: url('../../assets/images/ui-no-source-selected.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 55vh;
     width: auto;
 }
