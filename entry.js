@@ -22,6 +22,7 @@ const InitializeApplication = () => {
     UIWindow.loadFile('./ui/index.html')
     UIWindow.setMenuBarVisibility(false)
 }
+Application.commandLine.appendSwitch('enable-features', 'SharedArrayBuffer')
 Application.on('ready', () => {
     InitializeApplication()
 })

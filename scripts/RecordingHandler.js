@@ -2,7 +2,7 @@ const { CanvasCapture } = require('canvas-capture')
 const HandlerDate = new Date()
 
 let isRecording = false
-
+CanvasCapture.browserSupportsMP4()
 CanvasCapture.init(
     document.getElementById('canvas-renderer'),
     {
@@ -10,7 +10,7 @@ CanvasCapture.init(
     }
 )
 CanvasCapture.beginVideoRecord({
-    format: CanvasCapture.WEBM,
+    format:  CanvasCapture.MP4,
     name: `StreamsoftCapture-${HandlerDate.getFullYear()}-${HandlerDate.getMonth()}-${HandlerDate.getDay}-at-${HandlerDate.getHours}-${HandlerDate.getMinutes()}`
 })
 document.getElementById('ui-record-stream').onclick = () => {
