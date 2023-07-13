@@ -53,10 +53,13 @@
                 <button class="ui-interaction-button" id="ui-start-capture" title="Select a source">
                     <span class="material-symbols-outlined">desktop_windows</span>
                 </button>
+                <button class="ui-interaction-button" id="ui-record-stream" title="Record">
+                    <span class="material-symbols-outlined">camera</span>
+                </button>
             </div>
         </div>
         <div class="ui-low-backdrop" id="ui-selector-backdrop">
-            <div class="ui-screen-selection-media">
+            <div class="ui-modal">
                 <h1>Select a screen to broadcast</h1>
                 <div id="ui-media-selector"></div>
                 <button class="ui-interaction-button" id="ui-cancel-selection">
@@ -69,5 +72,6 @@
         </div>
         <script src="../scripts/ResizableWindow.js" type="text/javascript"></script>
         <script src="../scripts/StreamHandler.js" type="text/javascript"></script>
+        <script src="../scripts/RecordingHandler.js" type="text/javascript"></script>
     </body>
 </html>
