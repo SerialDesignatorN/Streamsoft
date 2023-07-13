@@ -27,13 +27,19 @@
                 </div>
             </div>
             <div class="window-actions">
-                <div class="action-button" id="minimize">
+                <div class="ui-fps-monitor">
+                    <span id="fps-counter">0 FPS</span>
+                </div>
+                <div class="action-button" id="settings" title="Streamsoft Settings">
+                    <span class="material-symbols-outlined">settings</span>
+                </div>
+                <div class="action-button" id="minimize" title="Minimize">
                     <span class="material-symbols-outlined">remove</span>
                 </div>
-                <div class="action-button" id="maximize">
+                <div class="action-button" id="maximize" title="Maximize/Restore Down">
                     <span class="material-symbols-outlined" id="ui-text-maximize">crop_square</span>
                 </div>
-                <div class="action-button" id="close">
+                <div class="action-button" id="close" title="Close">
                     <span class="material-symbols-outlined">close</span>
                 </div>
             </div>
@@ -41,11 +47,11 @@
         <div class="ui-preview-area">
             <canvas width="1280" height="720" id="canvas-renderer"></canvas>
             <div class="ui-preview-control-panel">
-                <button class="ui-interaction-button">
-                    <span class="material-symbols-outlined">play_arrow</span>
+                <button class="ui-interaction-button" title="Play/Pause Stream" id="play-stream-toggle">
+                    <span class="material-symbols-outlined" id="play-stream-indicator">play_arrow</span>
                 </button>
-                <button class="ui-interaction-button" id="ui-start-capture">
-                    <span class="material-symbols-outlined">desktop_windows</span> &nbsp;<b>Start Capture</b>
+                <button class="ui-interaction-button" id="ui-start-capture" title="Select a source">
+                    <span class="material-symbols-outlined">desktop_windows</span>
                 </button>
             </div>
         </div>
