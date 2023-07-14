@@ -92,7 +92,16 @@ const StartCapture = async (id) => {
       HandlerLastTime = HandlerCurrentTime
       HandlerLastFrame = HandlerCurrentFrame
       console.log(`Stream FPS: ${HandlerFPSCount}`)
-      document.getElementById('fps-counter').innerText = `${HandlerFPSCount} FPS`
+      if (HandlerFPSCount < 25) {
+        document.getElementById('fps-counter').style.color = 'red'
+        document.getElementById('fps-counter').innerHTML = `
+        <span class="material-symbols-outlined" title="Streamsoft is stuttering or is having a FPS drop right now. Expect to be FPS drops on the final recording.">error</span>
+        &nbsp;${HandlerFPSCount} FPS
+        `
+      } else {
+        document.getElementById('fps-counter').style.color = ''
+        document.getElementById('fps-counter').innerText = `${HandlerFPSCount} FPS`
+      }
     }, 1000)
   } catch (error) {
     console.error('An error occurred while capturing the video stream:', error);
