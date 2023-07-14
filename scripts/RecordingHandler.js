@@ -1,5 +1,7 @@
 const { CanvasCapture } = require('canvas-capture')
 const HandlerDate = new Date()
+const NodeFS = require('fs')
+const NodePath = require('path')
 
 let isRecording = false
 CanvasCapture.init(
@@ -23,6 +25,15 @@ document.getElementById('ui-record-stream').onclick = () => {
             name: `StreamsoftCapture-${HandlerDate.getFullYear()}-${HandlerDate.getMonth()}-${HandlerDate.getDay}-at-${HandlerDate.getHours}-${HandlerDate.getMinutes()}`,
             onExportProgress: (HandlerExportProgress) => {
                 console.log(`EXPORT: export_status=${HandlerExportProgress}`)
+            },
+            onExport: async (HandlerBlob, HandlerFileName) => {
+                const HandlerExportResponse = await fetch(HandlerBlob)
+                const HandlerBuffer = await HandlerExportResponse.buffer()
+                const VideoFolder = NodePath.join(process.env.USERPROFILE, 'Videos');
+                const HandlerFilePath = NodePath.join(VideoFolder.HandlerFileName)
+                NodeFS.writeFile(HandlerFilePath, HandlerBuffer, () => {
+                    console.log(`Attempted to save ${HandlerFileName} on ${HandlerFilePath}`)
+                })
             },
             onExportFinish: () => {
                 console.log('Finished exporting capture')
