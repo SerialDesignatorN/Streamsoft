@@ -8,6 +8,16 @@
         opacity: 1;
     }
 }
+@keyframes ui-slight-popdown {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 0; 
+    }
+}
 * {
     margin: 0;
     overflow: hidden;
@@ -159,6 +169,13 @@ body {
 .ui-fps-monitor {
     display: inline-block;
     font-weight: 700;
+}
+.ui-go-live {
+    background-image: linear-gradient(45deg, var(--theme-color), var(--theme-secondary-color));
+}
+.ui-go-live:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    background-blend-mode: multiply !important;
 }
 canvas {
     background-image: url('../../assets/images/ui-no-source-selected.png');

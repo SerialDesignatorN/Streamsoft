@@ -2,31 +2,38 @@ const { CanvasCapture } = require('canvas-capture')
 const HandlerDate = new Date()
 
 let isRecording = false
-CanvasCapture.browserSupportsMP4()
 CanvasCapture.init(
     document.getElementById('canvas-renderer'),
     {
         verbose: true
     }
 )
-CanvasCapture.beginVideoRecord({
-    format:  CanvasCapture.MP4,
-    name: `StreamsoftCapture-${HandlerDate.getFullYear()}-${HandlerDate.getMonth()}-${HandlerDate.getDay}-at-${HandlerDate.getHours}-${HandlerDate.getMinutes()}`
-})
 document.getElementById('ui-record-stream').onclick = () => {
-    if (!isRecording) {
+    if (isRecording != false) {
         isRecording = false
         try {
             CanvasCapture.stopRecord()
+            document.getElementById('ui-record-status').innerText = 'camera'
         } catch (e) {
             console.error(`Failed to stop recording. Err: ${e}`)
         }
     } else {
+        CanvasCapture.beginVideoRecord({
+            format:  CanvasCapture.MP4,
+            name: `StreamsoftCapture-${HandlerDate.getFullYear()}-${HandlerDate.getMonth()}-${HandlerDate.getDay}-at-${HandlerDate.getHours}-${HandlerDate.getMinutes()}`,
+            onExportProgress: (HandlerExportProgress) => {
+                console.log(`EXPORT: export_status=${HandlerExportProgress}`)
+            },
+            onExportFinish: () => {
+                console.log('Finished exporting capture')
+            }
+        })
         isRecording = true
         console.log('Set isRecording to true')
         console.log(`Status of recording in MP4: ${CanvasCapture.browserSupportsMP4()}`)
         try {
             CanvasCapture.recordFrame()
+            document.getElementById('ui-record-status').innerText = 'square'
             console.log('Attempted to start recording')
         } 
         catch (e) {

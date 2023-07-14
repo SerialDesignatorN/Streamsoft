@@ -54,7 +54,10 @@
                     <span class="material-symbols-outlined">desktop_windows</span>
                 </button>
                 <button class="ui-interaction-button" id="ui-record-stream" title="Record">
-                    <span class="material-symbols-outlined">camera</span>
+                    <span class="material-symbols-outlined" id="ui-record-status">camera</span>
+                </button>
+                <button class="ui-interaction-button ui-go-live" id="ui-go-live-button" title="Go Live">
+                    <span class="material-symbols-outlined">cast</span> &nbsp;<b>Go Live</b>
                 </button>
             </div>
         </div>
@@ -70,8 +73,18 @@
                 </button>
             </div>
         </div>
+        <div class="ui-low-backdrop" id="ui-settings-backdrop">
+            <div class="ui-modal">
+                <h1>Streamsoft Settings</h1>
+                <div id="ui-media-selector"></div>
+                <button class="ui-interaction-button" id="ui-save-and-reconfigure">
+                    <b>Save and reconfigure</b>
+                </button>
+            </div>
+        </div>
         <script src="../scripts/ResizableWindow.js" type="text/javascript"></script>
         <script src="../scripts/StreamHandler.js" type="text/javascript"></script>
         <script src="../scripts/RecordingHandler.js" type="text/javascript"></script>
+        <script src="../scripts/GeneralScriptHandler.js" type="text/javascript"></script>
     </body>
 </html>

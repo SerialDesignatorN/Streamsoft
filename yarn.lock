@@ -32,6 +32,16 @@
     regenerator-runtime "^0.13.7"
     resolve-url "^0.2.1"
 
+"@ffmpeg/ffmpeg@^0.11.6":
+  version "0.11.6"
+  resolved "https://registry.yarnpkg.com/@ffmpeg/ffmpeg/-/ffmpeg-0.11.6.tgz#9cbe42dfb5132fca74ae5570ebeee2341f8c6e51"
+  integrity sha512-uN8J8KDjADEavPhNva6tYO9Fj0lWs9z82swF3YXnTxWMBoFLGq3LZ6FLlIldRKEzhOBKnkVfA8UnFJuvGvNxcA==
+  dependencies:
+    is-url "^1.2.4"
+    node-fetch "^2.6.1"
+    regenerator-runtime "^0.13.7"
+    resolve-url "^0.2.1"
+
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.6.0.tgz#3c7c9c46e678feefe7a2e5bb609d3dbd665ffb3f"
@@ -53,6 +63,11 @@
     "@types/keyv" "^3.1.4"
     "@types/node" "*"
     "@types/responselike" "^1.0.0"
+
+"@types/dom-webcodecs@^0.1.4", "@types/dom-webcodecs@^0.1.6":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@types/dom-webcodecs/-/dom-webcodecs-0.1.8.tgz#1f48409f83120625a12b6692a271ff3f10d77b7b"
+  integrity sha512-KThTPaGQJLITk8Q0XkEkz+GqFdoWDyQfbyeJmfEUagB15TZQdNx5AqP2b7GP6vkVM6X/6T1Z8EHxA8RgHfY9BA==
 
 "@types/http-cache-semantics@*":
   version "4.0.1"
@@ -82,6 +97,11 @@
   integrity sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==
   dependencies:
     "@types/node" "*"
+
+"@types/wicg-file-system-access@^2020.9.5":
+  version "2020.9.6"
+  resolved "https://registry.yarnpkg.com/@types/wicg-file-system-access/-/wicg-file-system-access-2020.9.6.tgz#da34476b1e29451c8b7aa1a6db86b185647cd970"
+  integrity sha512-6hogE75Hl2Ov/jgp8ZhDaGmIF/q3J07GtXf8nCJCwKTHq7971po5+DId7grft09zG7plBwpF6ZU0yx9Du4/e1A==
 
 "@types/yauzl@^2.9.1":
   version "2.10.0"
@@ -161,6 +181,26 @@ canvas-capture@^2.1.1:
     jszip "^3.7.1"
     mdn-polyfills "^5.20.0"
     micromodal "^0.4.6"
+
+canvas-record@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/canvas-record/-/canvas-record-4.2.0.tgz#52cf6e6804acbd7614a6493631f71f7a055fe1b0"
+  integrity sha512-Rr4eUBVrbuvmn6ZaBMfsAopKoUowrl58TJud/0h4R2qHBEhAmYoC7/mvbppLWJHtkWFwAFW5x+L96RGvOvHqXQ==
+  dependencies:
+    "@ffmpeg/ffmpeg" "^0.11.6"
+    canvas-screenshot "^4.1.0"
+    gifenc "^1.0.3"
+    h264-mp4-encoder "^1.0.12"
+    media-codecs "^2.0.0"
+    mp4-muxer "^2.1.1"
+    webm-muxer "^3.1.0"
+
+canvas-screenshot@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/canvas-screenshot/-/canvas-screenshot-4.1.0.tgz#0620a132417abeb92e8116aac1384a7623411314"
+  integrity sha512-Ex5m3nljIQIa03hsu5i9uhf2L02v4zHueOmChcPWImU7rG5f7+7NZim0hd7vCd3I8FQZL7WZSXrZk5xHHIXLSA==
+  dependencies:
+    file-extension "^4.0.5"
 
 chalk@^4.1.0:
   version "4.1.2"
@@ -318,6 +358,11 @@ fd-slicer@~1.1.0:
   dependencies:
     pend "~1.2.0"
 
+file-extension@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/file-extension/-/file-extension-4.0.5.tgz#ae6cef34c28e7313a92baa4aa955755cacdf0ce3"
+  integrity sha512-l0rOL3aKkoi6ea7MNZe6OHgqYYpn48Qfflr8Pe9G9JPPTx5A+sfboK91ZufzIs59/lPqh351l0eb6iKU9J5oGg==
+
 file-saver@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
@@ -374,6 +419,11 @@ get-stream@^5.1.0:
   dependencies:
     pump "^3.0.0"
 
+gifenc@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gifenc/-/gifenc-1.0.3.tgz#3a1a97fa5ab70ebefd000350b9aac8313b30b3aa"
+  integrity sha512-xdr6AdrfGBcfzncONUOlXMBuc5wJDtOueE3c5rdG0oNgtINLD+f2iFZltrBRZYzACRbKr+mSVU/x98zv2u3jmw==
+
 glob-parent@~5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
@@ -421,6 +471,11 @@ graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
+
+h264-mp4-encoder@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/h264-mp4-encoder/-/h264-mp4-encoder-1.0.12.tgz#9979ddde0faa1cdee75a8605bd39aa4ccc66cb12"
+  integrity sha512-xih3J+Go0o1RqGjhOt6TwXLWWGqLONRPyS8yoMu/RoS/S8WyEv4HuHp1KBsDDl8srZQ3gw9f95JYkCSjCuZbHQ==
 
 has-flag@^4.0.0:
   version "4.0.0"
@@ -580,6 +635,11 @@ mdn-polyfills@^5.20.0:
   resolved "https://registry.yarnpkg.com/mdn-polyfills/-/mdn-polyfills-5.20.0.tgz#ca8247edf20a4f60dec6804372229812b348260b"
   integrity sha512-AbTv1ytcoOUAkxw6u5oo2QPf27kEZgxBAQr49jFb4i2VnTnFGfJbcIQ9UDBOdfNECeXsgkYFwB2BkdeTfOzztw==
 
+media-codecs@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/media-codecs/-/media-codecs-2.0.0.tgz#9f6d5163248dee5395e45cc4fd9eee6e6e64e1bf"
+  integrity sha512-0dRnjeoS3/qagtTwuZDA6RyEazt8/fulq020ej05DB5ARnXJtfKR/Q/p9dSiId356c2bTAYzMFXFZNajF0Wbcg==
+
 micromodal@^0.4.6:
   version "0.4.10"
   resolved "https://registry.yarnpkg.com/micromodal/-/micromodal-0.4.10.tgz#d6f59c21d2f4a5af480f65909eb9608a1d558c73"
@@ -594,6 +654,14 @@ mimic-response@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
+
+mp4-muxer@^2.1.1:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/mp4-muxer/-/mp4-muxer-2.1.3.tgz#661bf03461498fce3da4c74b9e648a39fae33f58"
+  integrity sha512-k7T4l53XvbRHHOtV3bMk66jgqFHli/QbDn9Osglz3+wGc1CNqVwdxkdzn6r8xglh7MhdrAGjUZj1WJFJ9NTy7g==
+  dependencies:
+    "@types/dom-webcodecs" "^0.1.6"
+    "@types/wicg-file-system-access" "^2020.9.5"
 
 ms@2.1.2:
   version "2.1.2"
@@ -841,6 +909,14 @@ webidl-conversions@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
   integrity sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==
+
+webm-muxer@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/webm-muxer/-/webm-muxer-3.1.1.tgz#19c4f0c6638c6d0e8d6ad611d14ca44af5fb3fd4"
+  integrity sha512-ZdSRwpbS/UU6K6SPjnyyj3XBLOf0H/b5vjBcdequcBTA16oE5rjrTCn802xZvsyL01Sjjpzam1uUPvZcSlZssg==
+  dependencies:
+    "@types/dom-webcodecs" "^0.1.4"
+    "@types/wicg-file-system-access" "^2020.9.5"
 
 whatwg-url@^5.0.0:
   version "5.0.0"

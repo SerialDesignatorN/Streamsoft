@@ -18,7 +18,8 @@
   "dependencies": {
     "@electron/remote": "^2.0.9",
     "apache-2.0": "^1.0.7",
-    "canvas-capture": "^2.1.1"
+    "canvas-capture": "^2.1.1",
+    "canvas-record": "^4.2.0"
   },
   "devDependencies": {
     "electron": "^24.3.1",
