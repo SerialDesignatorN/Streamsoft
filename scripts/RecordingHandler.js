@@ -3,6 +3,7 @@ const HandlerDate = new Date()
 const NodeFS = require('fs')
 const NodePath = require('path')
 
+
 let isRecording = false
 CanvasCapture.init(
     document.getElementById('canvas-renderer'),
