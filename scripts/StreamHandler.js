@@ -92,15 +92,18 @@ const StartCapture = async (id) => {
       HandlerLastTime = HandlerCurrentTime
       HandlerLastFrame = HandlerCurrentFrame
       console.log(`Stream FPS: ${HandlerFPSCount}`)
-      if (HandlerFPSCount < 25) {
+      if (HandlerFPSCount < 15) {
         document.getElementById('fps-counter').style.color = 'red'
         document.getElementById('fps-counter').innerHTML = `
         <span class="material-symbols-outlined" title="Streamsoft is stuttering or is having a FPS drop right now. Expect to be FPS drops on the final recording.">error</span>
         &nbsp;${HandlerFPSCount} FPS
         `
       } else {
-        document.getElementById('fps-counter').style.color = ''
-        document.getElementById('fps-counter').innerText = `${HandlerFPSCount} FPS`
+        document.getElementById('fps-counter').style.color = 'green'
+        document.getElementById('fps-counter').innerHTML = `
+        <span class="material-symbols-outlined" title="Your FPS is good and stable for Streamsoft to record on.">check_circle</span>
+        &nbsp;${HandlerFPSCount} FPS
+        `
       }
     }, 1000)
   } catch (error) {
