@@ -50,7 +50,7 @@ document.getElementById('ui-record-stream').onclick = () => {
         isRecording = true
         console.log('Set isRecording to true')
         try {
-            RecorderMedia.start()
+            RecorderMedia.start(100)
             document.getElementById('ui-record-status').innerText = 'square'
             console.log('Attempted to start recording')
         } 
