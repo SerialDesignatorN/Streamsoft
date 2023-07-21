@@ -13,7 +13,6 @@ let isRecording = false
 '-c:v', 'copy', '-c:a', 'copy', '-strict', 'experimental',
 '-f', 'mp4',
 'streamsoft-mp4-dump.mp4'*/
-const FileFormat = `StreamsoftCapture-${DateTest.getFullYear()}-${DateTest.getMonth()}-${DateTest.getDay()}-At-${DateTest.getHours()}-${DateTest.getMinutes()}-${DateTest.getSeconds()}.mp4`
 
 const CanvasStream = CanvasHandler.captureStream(60)
 const RecorderMedia = new MediaRecorder(CanvasStream, { mimeType: 'video/webm;codecs=h264' })
@@ -34,7 +33,7 @@ RecorderMedia.onstop = async () => {
     const HandlerData = new Uint8Array(BlobReader.result);
     const HandlerUInt8ArrayData = new Uint8Array(HandlerData);
   
-    const outputFilePath = path.join(ElectronApp.getPath('videos'), 'Streamsoft Captures', FileFormat);
+    const outputFilePath = path.join(ElectronApp.getPath('videos'), 'Streamsoft Captures', `StreamsoftCapture-${DateTest.getFullYear()}-${DateTest.getMonth()}-${DateTest.getDay()}-At-${DateTest.getHours()}-${DateTest.getMinutes()}-${DateTest.getSeconds()}.mp4`);
   
     // Convert webm Uint8Array to mp4 using ffmpeg-mp4.js with arguments
     const args = [
@@ -98,7 +97,9 @@ RecorderMedia.onstop = async () => {
       document.getElementById('ui-export-onprogress').style.display = 'none';
       CallToast('Error running ffmpeg. Please check the console for more details.', 'error');
     }
-  };
+    // Clean up temp frames
+    TemporaryFrames = []
+};
 document.getElementById('ui-record-stream').onclick = () => {
     if (isRecording != false) {
         isRecording = false
