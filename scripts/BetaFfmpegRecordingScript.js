@@ -31,6 +31,7 @@ RecorderMedia.onstop = () => {
             var MP4Blob = new Blob([HandlerMP4.MEMFS[0].data], { type: 'video/mp4'})
         } catch (e) {
             console.error(`Failed to create blob. Error: ${e}`)
+            CallToast(e, 'error')
         }
         NodeFS.writeFile(NodePath.join(VideoPath, `StreamsoftCapture-${DateTest.getFullYear()}-${DateTest.getMonth()}-${DateTest.getDay()}-At-${DateTest.getHours()}-${DateTest.getMinutes()}-${DateTest.getSeconds()}.mp4`), MP4Blob)
         console.log('Finished saving MP4')
