@@ -7,4 +7,8 @@
     --theme-color: #6F01A3;
     --theme-secondary-color: #4A00A8;
     --main-text-color: #E0E0E0;
+    --main-toast-error: #fa3c3c;
+    --main-toast-error-secondary: #ff4a4a;
+    --main-toast-success: #09cf09;
+    --main-toast-success-secondary: #2aaa2a;
 }

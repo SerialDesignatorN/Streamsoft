@@ -82,9 +82,22 @@
                 </button>
             </div>
         </div>
+        <div class="ui-toast" id="ui-toast">
+            <div class="ui-toast-icon">
+                <span class="material-symbols-outlined"></span>
+            </div>
+            <div class="ui-toast-details">
+                <span id="ui-toast-details">
+                    Error in recording:
+                    Uncaught TypeError: data is not defined
+                </span>
+                <span class="ui-toast-click-to-dismiss">Click to dismiss</span>
+            </div>
+        </div>
         <script src="../scripts/ResizableWindow.js" type="text/javascript"></script>
         <script src="../scripts/StreamHandler.js" type="text/javascript"></script>
         <script src="../scripts/BetaFfmpegRecordingScript.js" type="text/javascript"></script>
         <script src="../scripts/GeneralScriptHandler.js" type="text/javascript"></script>
+        <script src="../scripts/ToastManager.js" type="text/javascript"></script>
     </body>
 </html>
