@@ -250,6 +250,13 @@ body {
 .ui-toast-success .ui-toast-icon .material-symbols-outlined::before {
     content: 'check_circle';
 }
+#ui-export-onprogress span {
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    font-size: 32pt;
+    font-weight: 700;
+}
 canvas {
     background-image: url('../../assets/images/ui-no-source-selected.png');
     background-size: cover;
