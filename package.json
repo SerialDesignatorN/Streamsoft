@@ -22,7 +22,9 @@
     "apache-2.0": "^1.0.7",
     "canvas-capture": "^2.1.1",
     "canvas-record": "^4.2.0",
-    "ffmpeg.js": "^4.2.9003"
+    "ffmpeg.js": "^4.2.9003",
+    "stream": "^0.0.2",
+    "stream-to-buffer": "^0.1.0"
   },
   "devDependencies": {
     "electron": "^24.3.1",
