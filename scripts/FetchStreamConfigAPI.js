@@ -11,7 +11,7 @@ document.getElementById('ui-save-and-reconfigure').onclick = () => {
     maxFrameRate = parseInt(document.getElementById('max-frame').value)
     fileFormat = document.getElementById('file-format').value
     document.getElementById('ui-settings-backdrop').style.display = 'none'
-    CallToast('Config saved for this session', 'success')
+    CallToast('Config saved for this session.<br>It is ideal to reselect the same source to apply the changes.', 'success')
 }
 const GetFileFormat = () => {
     const DateFormat = new Date()
