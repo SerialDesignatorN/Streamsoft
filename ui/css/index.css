@@ -38,6 +38,18 @@
         filter: blur(2px); /* Apply motion blur during the fall */
       }
   }
+*::-webkit-scrollbar {
+    width: 10px;
+    padding: 2px;
+    background-color: var(--main-color);
+}
+*::-webkit-scrollbar-thumb {
+    background-color: var(--theme-color);
+    border-radius: 7px;
+}
+*::-webkit-scrollbar-thumb:active {
+    background-color: var(--theme-secondary-color);
+}
 * {
     margin: 0;
     overflow: hidden;
@@ -157,7 +169,7 @@ body {
     height: 112px;
     border-radius: 8px;
 }
-#ui-media-selector {
+.ui-overflow {
     max-height: 60vh;
     overflow-y: scroll;
     margin-bottom: 5px;
