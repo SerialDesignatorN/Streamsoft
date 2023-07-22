@@ -25,7 +25,7 @@ const GetFileFormat = () => {
     }
     const FormatRegex = /\[yyyy\]|\[mm\]|\[dd\]|\[hh\]|\[mm\]|\[ss\]/g;
 
-    return fileFormat.replace(FormatRegex, FormatMatch => FilePlaceholders[FormatMatch] || FormatMatch)
+    return fileFormat.replace(FormatRegex, FormatMatch => FilePlaceholders[FormatMatch] || FormatMatch) + '.mp4'
 }
 const GetRedrawRate = () => { return redrawRate;}
 const GetIdealFrameRate = () => { return idealFrameRate; }
