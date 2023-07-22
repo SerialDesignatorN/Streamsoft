@@ -76,7 +76,33 @@
         <div class="ui-low-backdrop" id="ui-settings-backdrop">
             <div class="ui-modal">
                 <h1>Streamsoft Settings</h1>
-                <div class="ui-overflow"></div>
+                <div class="ui-overflow">
+                    <label for="width">Canvas width</label>
+                    <br>
+                    <input type="number" id="width" placeholder="Canvas width" value="1280">
+                    <br>
+                    <label for="height">Canvas height</label>
+                    <br>
+                    <input type="number" id="height" placeholder="Canvas height" value="720">
+                    <br>
+                    <label for="redraw-rate">Redraw rate</label>
+                    <br>
+                    <input type="number" id="redraw-rate" placeholder="Redraw rate" value="60">
+                    <br>
+                    <label for="ideal-frame">Ideal framerate</label>
+                    <br>
+                    <input type="number" id="ideal-frame" placeholder="Ideal framerate" value="45">
+                    <br>
+                    <label for="max-frame">Max framerate</label>
+                    <br>
+                    <input type="number" id="max-frame" placeholder="Max framerate" value="120">
+                    <br>
+                    <label for="file-format">File format</label>
+                    <br>
+                    <input type="text" id="file-format" placeholder="File format" value="StreamsoftCapture-[yyyy]-[mm]-[dd]-At-[hh]-[mm]-[ss]">
+                    <br>
+                    <label>Use brackets <b>"["</b> in order to adjust your format</label>
+                </div>
                 <button class="ui-interaction-button" id="ui-save-and-reconfigure">
                     <b>Save and reconfigure</b>
                 </button>
@@ -105,5 +131,6 @@
         <script src="../scripts/BetaFfmpegRecordingScript.js" type="text/javascript"></script>
         <script src="../scripts/GeneralScriptHandler.js" type="text/javascript"></script>
         <script src="../scripts/ToastManager.js" type="text/javascript"></script>
+        <script src="../scripts/FetchStreamConfigAPI.js" type="text/javascript"></script>
     </body>
 </html>

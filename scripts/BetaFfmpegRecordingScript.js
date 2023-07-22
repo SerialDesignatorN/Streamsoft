@@ -33,7 +33,7 @@ RecorderMedia.onstop = async () => {
     const HandlerData = new Uint8Array(BlobReader.result);
     const HandlerUInt8ArrayData = new Uint8Array(HandlerData);
   
-    const outputFilePath = path.join(ElectronApp.getPath('videos'), 'Streamsoft Captures', `StreamsoftCapture-${DateTest.getFullYear()}-${DateTest.getMonth()}-${DateTest.getDay()}-At-${DateTest.getHours()}-${DateTest.getMinutes()}-${DateTest.getSeconds()}.mp4`);
+    const outputFilePath = path.join(ElectronApp.getPath('videos'), 'Streamsoft Captures', GetFileFormat());
   
     // Convert webm Uint8Array to mp4 using ffmpeg-mp4.js with arguments
     const args = [

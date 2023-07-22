@@ -52,8 +52,8 @@ const StartCapture = async (id) => {
             minHeight: 480,
             maxHeight: 1440,
             frameRate: {
-              ideal: 45,
-              max: 120
+              ideal: GetIdealFrameRate(),
+              max: GetMaxFramerate()
             }
         }
       }
@@ -84,7 +84,7 @@ const StartCapture = async (id) => {
 
     intervalId = setInterval(() => {
       CanvasCTX.drawImage(VideoRenderer, 0, 0, CanvasRenderer.width, CanvasRenderer.height);
-    }, 1000 / 60);
+    }, 1000 / GetRedrawRate());
     setInterval(() => {
       const HandlerCurrentTime = Date.now()
       const HandlerCurrentFrame = VideoRenderer.webkitDecodedFrameCount
