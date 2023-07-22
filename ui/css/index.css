@@ -28,13 +28,15 @@
 }
 @keyframes ui-fall {
     from {
-      transform: translateY(0px) rotate(0deg);
-      opacity: 1;
-    }
-    to {
-      transform: translateY(100px) rotate(3deg);
-      opacity: 0;
-    }
+        transform: translateY(0px) rotate(0deg);
+        opacity: 1;
+        filter: blur(0); /* No blur at the beginning */
+      }
+      to {
+        transform: translateY(100px) rotate(3deg); /* Slight 3-degree rotation at the end */
+        opacity: 0;
+        filter: blur(2px); /* Apply motion blur during the fall */
+      }
   }
 * {
     margin: 0;
