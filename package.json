@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "OBS clone, but homewritten",
   "main": "entry.js",
+  "homepage": "https://zeankundev.github.io/Streamsoft",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",
