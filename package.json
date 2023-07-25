@@ -4,7 +4,9 @@
   "description": "OBS clone, but homewritten",
   "main": "entry.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder",
+    "win": "electron-builder --win"
   },
   "author": "zeankun.dev <zeanfender11@gmail.com>",
   "license": "Apache-2.0",
