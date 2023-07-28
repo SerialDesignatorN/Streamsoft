@@ -1,6 +1,6 @@
 {
   "name": "streamsoft",
-  "version": "0.2.0",
+  "version": "0.7.5",
   "description": "OBS clone, but homewritten",
   "main": "entry.js",
   "homepage": "https://zeankundev.github.io/Streamsoft",
