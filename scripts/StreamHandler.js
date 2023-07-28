@@ -65,6 +65,7 @@ const StartCapture = async (id) => {
     VideoRenderer.muted = true
     document.getElementById('play-stream-indicator').innerHTML = 'pause'
     VideoRenderer.play();
+    StartPreRecordSession()
 
     document.getElementById('play-stream-toggle').onclick = () => {
       if (VideoRenderer.paused) {
