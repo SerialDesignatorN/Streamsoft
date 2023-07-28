@@ -3,8 +3,11 @@
   "version": "0.2.0",
   "description": "OBS clone, but homewritten",
   "main": "entry.js",
+  "homepage": "https://zeankundev.github.io/Streamsoft",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder",
+    "win": "electron-builder --win"
   },
   "author": "zeankun.dev <zeanfender11@gmail.com>",
   "license": "Apache-2.0",
@@ -14,6 +17,33 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   ],
+  "build": {
+    "appId": "dev.zeankun.streamsoft",
+    "productName": "Streamsoft",
+    "copyright": "© 2023 zeankun.dev",
+    "icon": "build/icons/512x512.png",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "publisherName": "zeankun.dev"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage",
+        "snap",
+        "rpm"
+      ],
+      "maintainer": "zeankun.dev",
+      "category": "AudioVideo",
+      "icon": "./build/icons/512x512.png"
+    }
+  },
   "private": false,
   "dependencies": {
     "@electron/remote": "^2.0.9",
@@ -28,6 +58,7 @@
   },
   "devDependencies": {
     "electron": "^24.3.1",
+    "electron-builder": "^24.6.3",
     "electron-reloader": "^1.2.3"
   }
 }
