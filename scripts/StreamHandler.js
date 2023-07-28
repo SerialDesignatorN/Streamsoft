@@ -91,7 +91,6 @@ const StartCapture = async (id) => {
       var HandlerFPSCount = Math.round((HandlerCurrentFrame - HandlerLastFrame) / (HandlerCurrentTime - HandlerLastTime) * 1000);
       HandlerLastTime = HandlerCurrentTime
       HandlerLastFrame = HandlerCurrentFrame
-      console.log(`Stream FPS: ${HandlerFPSCount}`)
       if (HandlerFPSCount < 15 || HandlerFPSCount == NaN) {
         document.getElementById('fps-counter').style.color = 'red'
         document.getElementById('fps-counter').innerHTML = `
