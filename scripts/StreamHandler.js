@@ -16,6 +16,7 @@ let CanvasCTX;
 let intervalId;
 
 const StartCapture = async (id) => {
+  document.title = `${id} - ${document.getElementById('canvas-renderer').width = document.getElementById('width').value}x${document.getElementById('canvas-renderer').height = document.getElementById('height').value}@${GetRedrawRate()}fps - Streamsoft Beta`
   var DumpedID = ''
   if (!selectedSource) {
     console.error('Screen source not selected');
