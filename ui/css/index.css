@@ -201,6 +201,7 @@ body {
 .ui-fps-monitor {
     display: inline-block;
     font-weight: 700;
+    margin-right: 10px;
 }
 .ui-fps-monitor .material-symbols-outlined {
     vertical-align: middle;

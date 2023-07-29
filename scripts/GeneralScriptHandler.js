@@ -3,6 +3,26 @@ document.getElementById('settings').onclick = () => {
 }
 const { promises: NodeFS } = require('fs');
 const { join: PathJoin } = require('path');
+const os = require('os')
+
+setInterval(() => {
+  const freememSize = os.freemem();
+  const totalmemSize = os.totalmem();
+  const usedMem = totalmemSize - freememSize;
+  const memUsage = Math.floor((usedMem / totalmemSize) * 100);
+  
+  const cpuCount = os.cpus().length;
+  const cpuInfo = os.cpus();
+  let totalCPUTime = 0;
+  
+  for (const cpu of cpuInfo) {
+    totalCPUTime += Object.values(cpu.times).reduce((acc, tv) => acc + tv, 0);
+  }
+  
+  const cpuUsage = ((process.cpuUsage().user + process.cpuUsage().system) / (totalCPUTime * cpuCount)) * 100;
+  document.getElementById('cpu-load-counter').innerHTML = `<span class="material-symbols-outlined">memory</span> &nbsp;${Math.trunc(cpuUsage)}%`
+  document.getElementById('ram-load-counter').innerHTML = `<span class="material-symbols-outlined">memory_alt</span> &nbsp;${Math.trunc(memUsage)}%`
+}, 1000)
 
 document.getElementById('ui-delete-captures-folder').onclick = async () => {
   const confirmationAlert = window.confirm(`Are you sure to delete the entire Streamsoft captures folder? Video editors might not work because of lost media that were caused by you.`);
