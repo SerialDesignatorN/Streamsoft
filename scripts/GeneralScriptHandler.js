@@ -20,6 +20,20 @@ setInterval(() => {
   }
   
   const cpuUsage = ((process.cpuUsage().user + process.cpuUsage().system) / (totalCPUTime * cpuCount)) * 100;
+  if (Math.trunc(cpuUsage) > 90) {
+    document.getElementById('cpu-load-counter').style.color = 'red'
+    document.getElementById('cpu-load-counter').title = 'Your CPU load is about to be overloaded, therefore leading to stutters'
+  } else {
+    document.getElementById('cpu-load-counter').style.color = 'green'
+    document.getElementById('cpu-load-counter').title = 'Your CPU load is okay for recording'
+  }
+  if (Math.trunc(memUsage) > 90) {
+    document.getElementById('ram-load-counter').style.color = 'red'
+    document.getElementById('ram-load-counter').title = 'Your RAM load is almost full, therefore leading to even more severe stutters'
+  } else {
+    document.getElementById('ram-load-counter').style.color = 'green'
+    document.getElementById('ram-load-counter').title = 'Your RAM load is okay for recording'
+  }
   document.getElementById('cpu-load-counter').innerHTML = `<span class="material-symbols-outlined">memory</span> &nbsp;${Math.trunc(cpuUsage)}%`
   document.getElementById('ram-load-counter').innerHTML = `<span class="material-symbols-outlined">memory_alt</span> &nbsp;${Math.trunc(memUsage)}%`
 }, 1000)
