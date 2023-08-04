@@ -56,7 +56,6 @@
 }
 body {
     font-family: 'DIN Next LT', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 300;
     color: var(--main-text-color);
     background-color: var(--main-color);
     user-select: none;
