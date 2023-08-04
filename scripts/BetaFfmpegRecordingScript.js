@@ -9,13 +9,19 @@ const FFMpegTest = require('@ffmpeg/ffmpeg')
 const { stdout } = require('process')
 const { app } = require('electron')
 let isRecording = false
+let isExecuted = false
 /* '-i', 'streamsoft-recording-dump.webm',
 '-c:v', 'copy', '-c:a', 'copy', '-strict', 'experimental',
 '-f', 'mp4',
 'streamsoft-mp4-dump.mp4'*/
+document.getElementById('ui-record-stream').onclick = () => {
+  if (isExecuted == false) CallToast('Select a source, then you can record.', 'error')
+}
+
 
 const StartPreRecordSession = async () => {
   console.log('Prerecord session started')
+  isExecuted = true
   const CanvasStream = CanvasHandler.captureStream(60)
   const HandlerVideoTrack = CanvasStream.getVideoTracks()[0]
   const HandlerAudioTrack = HandlerVideoStream.getAudioTracks()[0]
