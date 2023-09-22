@@ -59,6 +59,8 @@ body {
     color: var(--main-text-color);
     background-color: var(--main-color);
     user-select: none;
+    display: flex;
+    flex-direction: column;
 }
 .titlebar {
     display: flex;
@@ -289,3 +291,22 @@ canvas {
     height: 55vh;
     width: auto;
 }
+.ui-overlay-container {
+    display: flex;
+    flex: 1; /* This makes the container expand vertically to fill its parent */
+  }
+  
+  .ui-overlay-editor {
+    box-sizing: border-box;
+    flex-direction: column;
+    padding: 5px;
+  }
+  
+  .ui-overlay-lists {
+     background-color: var(--main-button-color);
+     flex-direction: column;
+     flex: 1;
+     padding: 5px;
+  }
+  
+  
