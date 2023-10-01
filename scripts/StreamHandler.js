@@ -30,7 +30,6 @@ const StartCapture = async (id) => {
     HandlerVideoStream.getTracks().forEach(track => track.stop());
     VideoRenderer.pause();
     const CanvasRenderer = document.getElementById('canvas-renderer');
-    CanvasCTX.clearRect(0, 0, CanvasRenderer.width, CanvasRenderer.height);
     clearInterval(intervalId);
   } else {
     DumpedID = id
@@ -69,20 +68,6 @@ const StartCapture = async (id) => {
     VideoRenderer.play();
     StartPreRecordSession()
 
-    document.getElementById('play-stream-toggle').onclick = () => {
-      if (VideoRenderer.paused) {
-        document.getElementById('play-stream-indicator').innerHTML = 'pause'
-        VideoRenderer.play()
-        IsStreaming = true
-        console.log('Stream resumed')
-      } else {
-        document.getElementById('play-stream-indicator').innerHTML = 'play_arrow'
-        VideoRenderer.pause()
-        IsStreaming = false
-        console.log('Stream paused')
-      }
-    }
-
 
     const CanvasRenderer = document.getElementById('canvas-renderer');
     CanvasRenderer.style.backgroundImage = ''
@@ -94,7 +79,7 @@ const StartCapture = async (id) => {
         "posy": 300,
         "sizex": 600,
         "sizey": 600,
-        "color": "white"
+        "color": "#fff"
       },
       {
         "type": "text",
@@ -112,12 +97,12 @@ const StartCapture = async (id) => {
         "posy": 500,
         "sizex": 200,
         "sizey": 200,
-        "content": "C:/Users/zeanf/Downloads/banner-fleet-2-new.webp"
+        "content": "../build/icons/512x512.png"
       }
     ]
 
     intervalId = setInterval(() => {
-      if (IsStreaming == true) RenderNewOverlay(SampleOverlayData)
+      if (IsStreaming == true) RenderNewOverlay(SampleOverlayData, GetRedrawRate())
       else;
       CanvasCTX.drawImage(VideoRenderer, 0, 0, CanvasRenderer.width, CanvasRenderer.height);
     }, 1000 / GetRedrawRate());
@@ -141,6 +126,25 @@ const StartCapture = async (id) => {
         `
       }
     }, 1000)
+    document.getElementById('play-stream-toggle').onclick = () => {
+      if (VideoRenderer.paused) {
+        document.getElementById('play-stream-indicator').innerHTML = 'pause'
+        VideoRenderer.play()
+        IsStreaming = true
+        intervalId = setInterval(() => {
+          if (IsStreaming == true) RenderNewOverlay(SampleOverlayData, GetRedrawRate())
+          else;
+          CanvasCTX.drawImage(VideoRenderer, 0, 0, CanvasRenderer.width, CanvasRenderer.height);
+        }, 1000 / GetRedrawRate());
+        console.log('Stream resumed')
+      } else {
+        document.getElementById('play-stream-indicator').innerHTML = 'play_arrow'
+        VideoRenderer.pause()
+        IsStreaming = false
+        clearInterval(intervalId)
+        console.log('Stream paused')
+      }
+    }
   } catch (error) {
     console.error('An error occurred while capturing the video stream:', error);
   }
@@ -153,7 +157,7 @@ modalCancelBtn.onclick = () => {
 };
 
 const updateStreamSelector = async () => {
-  UIStreamsContainer.innerHTML = '<div class="ui-loading-status"></div>';
+  UIStreamsContainer.innerHTML = '<div class="ui-loading-container"><div class="ui-loading-status"></div></div>';
 
   const AppSources = await desktopCapturer.getSources({ types: ['screen', 'window'] });
 
